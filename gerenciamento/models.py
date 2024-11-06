@@ -72,3 +72,24 @@ class Frequencia(models.Model):
 
     def __str__(self):
         return f"{self.bolsista.nome} - {self.mes}"
+    
+    
+    #parte de cadastro de times 
+
+class Time(models.Model):
+    nome_participante = models.CharField(max_length=100)
+    modalidade = models.CharField(max_length=50, choices=Modalidade.choices)
+
+    def __str__(self):
+        return f"{self.nome_participante} - {self.modalidade}"
+    
+    
+
+
+class Time(models.Model):
+    nome_time = models.CharField(max_length=100, default="Time Padrão")  
+    nome_participante = models.CharField(max_length=100)
+    modalidade = models.CharField(max_length=50, choices=Modalidade.choices)
+
+    def __str__(self):
+        return self.nome_time  # Opcionalmente, altere para exibir o nome do time

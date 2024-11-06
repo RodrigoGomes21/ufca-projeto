@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Bolsista, Participante, Frequencia
+from .models import Bolsista, Participante, Frequencia, Time 
 
 class FrequenciaAdmin(admin.ModelAdmin):
     list_display = ('bolsista', 'mes', 'frequencia_entregue', 'frequencia_participantes_entregue')
@@ -10,8 +10,15 @@ class FrequenciaAdmin(admin.ModelAdmin):
 class ParticipanteAdmin(admin.ModelAdmin):
     list_display = ('nome', 'modalidade', 'curso')  # Adiciona as colunas visíveis na listagem
     list_filter = ('modalidade', 'curso', 'competidor')  # Adiciona filtros por modalidade e curso
- 
+    
 
+
+#parte de Cadastro de time 
+
+class TimeAdmin(admin.ModelAdmin):
+    list_display = ('nome_participante', 'modalidade')
+ 
+admin.site.register(Time, TimeAdmin)
 admin.site.register(Bolsista)
 admin.site.register(Participante, ParticipanteAdmin)  # Certifique-se de registrar o admin com o ParticipanteAdmin
 admin.site.register(Frequencia, FrequenciaAdmin)
